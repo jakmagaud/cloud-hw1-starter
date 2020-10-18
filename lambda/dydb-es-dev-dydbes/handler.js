@@ -16,7 +16,11 @@ module.exports.dydbes = async(event, context) => {
           index: 'restaurants',
           type: 'Restaurant',
           id: record.dynamodb.NewImage.id.S,
-          cuisine : record.dynamodb.NewImage.cuisine.S
+          body: {
+            id: record.dynamodb.NewImage.id.S,
+            title: record.dynamodb.NewImage.name.S,
+            cuisine : record.dynamodb.NewImage.cuisine.S
+          }
         });
         console.log("==== completed ====");
         console.log(result);
